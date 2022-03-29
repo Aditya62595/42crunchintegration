@@ -20,6 +20,20 @@ paths:
            application/json:
              schema:
                $ref: "#/components/schemas/Employees"
+       "406":
+         description: "Unacceptable the data should be in the below format"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employees"
+       "429":
+         description: "The number of requests have reached the limit"
+         content:
+           application/json:
+             schema:
+               type: string
+               example: "limit has been reached"
+               
     post:
      requestBody:
        description: "This is to create a new employee"
@@ -34,6 +48,19 @@ paths:
            application/json:
              schema:
                $ref: "#/components/schemas/Employee"
+       "406":
+         description: "Unacceptable the data should be in the below format"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employees"
+       "429":
+         description: "The number of requests have reached the limit"
+         content:
+           application/json:
+             schema:
+               type: string
+               example: "limit has been reached"
       
         
   /employees/{employeeid}:
@@ -47,6 +74,19 @@ paths:
            application/json:
              schema:
                $ref: "#/components/schemas/Employee"
+       "406":
+         description: "Unacceptable the data should be in the below format"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employees"
+       "429":
+         description: "The number of requests have reached the limit"
+         content:
+           application/json:
+             schema:
+               type: string
+               example: "limit has been reached"
     delete:
       responses:
        "201":
@@ -55,9 +95,19 @@ paths:
            application/json:
              schema:
                $ref: "#/components/schemas/Employee"
-    
-    
-    
+       "406":
+         description: "Unacceptable the data should be in the below format"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employees"
+       "429":
+         description: "The number of requests have reached the limit"
+         content:
+           application/json:
+             schema:
+               type: string
+               example: "limit has been reached"
 components:
   schemas:
     Employee:
