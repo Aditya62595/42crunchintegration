@@ -13,8 +13,8 @@ paths:
     description: This is to create or retrieve an employee
     get:
      description: This is to retrieve an employee
-     security:
-       - APIkey: []
+     security: 
+     - JWTToken : []
          
      responses:
        "200":
@@ -36,10 +36,20 @@ paths:
              schema:
                type: string
                example: "limit has been reached"
+       "401":
+         description: "Unauthorized error"    
+         content:
+           application/json:
+             example: "The user name and password are wrong"    
+       "403":
+         description: "Forbidden error"
+         content:
+           application/json:
+             example: "You are not authorized to enter here"     
                
     post:
      security:
-       - APIkey: []
+     - JWTToken : []
          
      requestBody:
        description: "This is to create a new employee"
@@ -68,13 +78,23 @@ paths:
              schema:
                type: string
                example: "limit has been reached"
+       "401":
+         description: "Unauthorized error"    
+         content:
+           application/json:
+             example: "The user name and password are wrong"    
+       "403":
+         description: "Forbidden error"
+         content:
+           application/json:
+             example: "You are not authorized to enter here" 
       
         
   /employees/{employeeid}:
     description: This is to retrieve or delete a specific employeeid
     get:
-     security:
-       - APIkey: []
+     security: 
+     - JWTToken : []
          
       
      description: This is to retrieve an employee
@@ -99,9 +119,19 @@ paths:
              schema:
                type: string
                example: "limit has been reached"
+       "401":
+         description: "Unauthorized error"    
+         content:
+           application/json:
+             example: "The user name and password are wrong"    
+       "403":
+         description: "Forbidden error"
+         content:
+           application/json:
+             example: "You are not authorized to enter here" 
     delete:
-      security:
-        - APIkey: []
+      security: 
+      - JWTToken : []
           
       responses:
        "201":
@@ -123,16 +153,28 @@ paths:
              schema:
                type: string
                example: "limit has been reached"
+       "401":
+         description: "Unauthorized error"    
+         content:
+           application/json:
+             example: "The user name and password are wrong"    
+       "403":
+         description: "Forbidden error"
+         content:
+           application/json:
+             example: "You are not authorized to enter here" 
+               
  
                              
-
+security : 
+  - JWTToken : []
+  
 components:
   securitySchemes:
-    APIkey:
-      type: apiKey
-      name: Apikey
-      in: header
-      description: "Apikey Security"
+    JWTToken:
+     type: http
+     scheme: bearer
+     bearerFormat: JWT
         
   schemas:
     Employee:
@@ -140,13 +182,22 @@ components:
      properties:
        id :
         type: "number"
-        example : 1234
+        maximum: 1000
+        example : 123
+        minimum: 1
        name :
         type: "string"
-        example : "Name of the employee"
+        example : "Name"
+        pattern: ^([A-Z])
+        maxLength: 10
+        minLength: 3
        title :
         type: "string"
         example : "Technical position of the employee"
+        pattern: ^([A-Z])
+        maxLength: 100
+        minLength: 15
+        
        
      required: 
       - gender
