@@ -13,6 +13,9 @@ paths:
     description: This is to create or retrieve an employee
     get:
      description: This is to retrieve an employee
+     security:
+       - APIkey: []
+         
      responses:
        "200":
          description: "Below are the list of employees"
@@ -35,8 +38,12 @@ paths:
                example: "limit has been reached"
                
     post:
+     security:
+       - APIkey: []
+         
      requestBody:
        description: "This is to create a new employee"
+       
        content:
         application/json:
          schema:
@@ -66,7 +73,12 @@ paths:
   /employees/{employeeid}:
     description: This is to retrieve or delete a specific employeeid
     get:
+     security:
+       - APIkey: []
+         
+      
      description: This is to retrieve an employee
+         
      responses:
        "200":
          description: "Below is the information of the selected employee"
@@ -88,6 +100,9 @@ paths:
                type: string
                example: "limit has been reached"
     delete:
+      security:
+        - APIkey: []
+          
       responses:
        "201":
          description: "Employee has been deleted"
@@ -108,7 +123,17 @@ paths:
              schema:
                type: string
                example: "limit has been reached"
+ 
+                             
+
 components:
+  securitySchemes:
+    APIkey:
+      type: apiKey
+      name: Apikey
+      in: header
+      description: "Apikey Security"
+        
   schemas:
     Employee:
      type: object
@@ -131,6 +156,7 @@ components:
      type : array
      items:
        $ref: "#/components/schemas/Employee"
+       
       
      
      
