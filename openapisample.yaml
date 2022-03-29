@@ -1,0 +1,92 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: OpenAPISample
+  contact : 
+     email : venkata_aditya_ratnala@epam.com
+     name : Aditya
+     url : https://aditya.com/contacts
+  description : This is a sample API created to integrate with github actions.
+  termsOfService: https://aditya.com/tos
+paths:
+  /employees:
+    description: This is to create or retrieve an employee
+    get:
+     description: This is to retrieve an employee
+     responses:
+       "200":
+         description: "Below are the list of employees"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employees"
+    post:
+     requestBody:
+       description: "This is to create a new employee"
+       content:
+        application/json:
+         schema:
+           $ref: "#/components/schemas/Employee"
+     responses:
+       "201":
+         description: "Employee has been created"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employee"
+      
+        
+  /employees/{employeeid}:
+    description: This is to retrieve or delete a specific employeeid
+    get:
+     description: This is to retrieve an employee
+     responses:
+       "200":
+         description: "Below is the information of the selected employee"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employee"
+    delete:
+      responses:
+       "201":
+         description: "Employee has been deleted"
+         content:
+           application/json:
+             schema:
+               $ref: "#/components/schemas/Employee"
+    
+    
+    
+components:
+  schemas:
+    Employee:
+     type: object
+     properties:
+       id :
+        type: "number"
+        example : 1234
+       name :
+        type: "string"
+        example : "Name of the employee"
+       title :
+        type: "string"
+        example : "Technical position of the employee"
+       
+     required: 
+      - gender
+      - id
+      - name
+    Employees:
+     type : array
+     items:
+       $ref: "#/components/schemas/Employee"
+      
+     
+     
+   
+    
+    
+    
+      
+  

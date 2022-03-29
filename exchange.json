@@ -1,0 +1,11 @@
+{
+  "main" : "openapisample.yaml",
+  "name" : "OpenAPISample",
+  "classifier" : "oas",
+  "tags" : [ ],
+  "groupId" : "245c810f-037f-4f76-8863-a5630c43ed42",
+  "assetId" : "openapisample",
+  "version" : "1.0.0",
+  "apiVersion" : "1.0.0",
+  "dependencies" : [ ]
+}
