@@ -6,8 +6,13 @@ info:
      email : venkata_aditya_ratnala@epam.com
      name : Aditya
      url : https://aditya.com/contacts
+     
   description : This is a sample API created to integrate with github actions.
   termsOfService: https://aditya.com/tos
+servers:
+  - url: https://www.myserver.com
+    description: Test server
+  
 paths:
   /employees:
     description: This is to create or retrieve an employee
@@ -187,16 +192,16 @@ components:
         minimum: 1
        name :
         type: "string"
-        example : "Name"
-        pattern: ^([A-Z])
+        example : "NAME"
+        pattern: "^([A-Z]){3,10}$"
         maxLength: 10
         minLength: 3
        title :
         type: "string"
-        example : "Technical position of the employee"
-        pattern: ^([A-Z])
-        maxLength: 100
-        minLength: 15
+        example : "TECHNICALPOSITION"
+        pattern: "^([A-Z]){10,20}$"
+        maxLength: 20
+        minLength: 10
         
        
      required: 
@@ -217,3 +222,7 @@ components:
     
       
   
+
+  examples:
+    newexample:
+      value: Name
