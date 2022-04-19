@@ -57,13 +57,12 @@ jobs:
           upload-to-code-scanning: true
           # Github token for uploading the results
           github-token: ${{ github.token }}
-        build:
-          - name: Run Spectral
-        runs-on: ubuntu-latest
-          steps:
-          # Check out the repository
-          - uses: actions/checkout@v2
-          - name: Install Spectral
-            run: npm install -g @stoplight/spectral-cli
-          - name: Run Rules
-            run: spectral lint opensampleapi.yaml --ruleset rules.yaml
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Spectral spotlight 
+        run: npm install -g @stoplight/spectral-cli
+      - name: Run rules
+        run: spectral lint oas-audit-scenario-2.yaml --ruleset rules.yaml
+        
