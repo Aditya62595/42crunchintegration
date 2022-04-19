@@ -64,5 +64,5 @@ jobs:
       - name: Spectral spotlight 
         run: npm install -g @stoplight/spectral-cli
       - name: Run rules
-        run: spectral lint openapisample.yaml --ruleset rules.yaml
+        run: spectral lint book-inventory-api-epam.yaml --ruleset rules.yaml
         
