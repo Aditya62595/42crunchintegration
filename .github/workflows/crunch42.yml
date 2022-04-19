@@ -64,5 +64,5 @@ jobs:
       - name: Spectral spotlight 
         run: npm install -g @stoplight/spectral-cli
       - name: Run rules
-        run: spectral lint oas-audit-scenario-2.yaml --ruleset rules.yaml
+        run: spectral lint opensampleapi.yaml --ruleset rules.yaml
         
